@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" >
   <img src="https://user-images.githubusercontent.com/45085843/146658168-a4770cf5-e1b1-40e6-8931-ffc64d3d4936.png">
 
   <h1>Privaxy</h1>
