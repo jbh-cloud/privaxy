@@ -74,7 +74,7 @@ impl Component for Filters {
                 self.filter_configuration_before_changes = Some(filter_configuration);
             }
             Message::Load => {
-                let request = Request::get(&format!("http://{}/filters", get_api_host()));
+                let request = Request::get(&format!("/filters"));
 
                 let message_callback = ctx.link().callback(|message: Message| message);
 
@@ -108,7 +108,7 @@ impl Component for Filters {
                     })
                     .collect::<Vec<_>>();
 
-                let request = Request::put(&format!("http://{}/filters", get_api_host()))
+                let request = Request::put(&format!("/filters"))
                     .header("Content-Type", "application/json")
                     .body(serde_json::to_string(&request_body).unwrap());
 

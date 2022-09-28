@@ -35,7 +35,7 @@ impl Component for BlockingEnabled {
     }
 
     fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
-        let base_request = Request::put(&format!("http://{}/blocking-enabled", get_api_host()))
+        let base_request = Request::put(&format!("/blocking-enabled"))
             .header("Content-Type", "application/json");
 
         let message_callback = ctx.link().callback(|message: Message| message);
@@ -83,7 +83,7 @@ impl Component for BlockingEnabled {
                 self.blocking_enabled = false;
             }
             Message::SetCurrentBlockingState => {
-                let request = Request::get(&format!("http://{}/blocking-enabled", get_api_host()));
+                let request = Request::get(&format!("/blocking-enabled"));
 
                 spawn_local(async move {
                     if let Ok(response) = request.send().await {
